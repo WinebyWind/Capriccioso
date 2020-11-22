@@ -1,0 +1,33 @@
+#include <stdio.h>
+
+void printbinary(int n){
+    int v,i;
+    FILE*fp = fopen("result.txt","w+");
+    for(i=0;n>1;i++){
+        v = n%2;
+        if (v==1) {
+            fprintf(fp, "1");
+        }else{
+            fprintf(fp, "0");
+        }
+        n = n/2;
+    }
+    printf("%d",n);
+    char fle[i+2];
+    rewind(fp);
+    fscanf(fp,"%s",fle);
+    fclose(fp);
+    for(v=i;v>=0;v--){
+        printf("%c",fle[v]);
+    }
+}
+
+int main(int argc, const char * argv[]) {
+    // insert code here...
+    int a;
+    while (scanf("%d",&a)) {
+        printbinary(a);
+        printf("\n");
+    }
+    return 0;
+}
