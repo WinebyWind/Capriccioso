@@ -1,0 +1,43 @@
+#include <stdio.h>
+
+int cf(int a){
+    int c=1;
+    if (a!=0){
+        for(int i=1;i<=a;i++){
+            c=c*2;
+        }
+    }
+    return c;
+}
+
+void binary(){
+    FILE *fp=fopen("buffer.txt", "w+");
+    char c;
+    int i=0;
+    int v;
+    int result=0;
+    for(c=getchar();c!='\n';c=getchar()){
+        fputc(c, fp);
+        i++;
+    }
+    rewind(fp);
+    char fle[i+1];
+    fscanf(fp,"%s",fle);
+    fclose(fp);
+    for(v=0;v<i;v++){
+        if (fle[v]=='1') {
+            result = result +cf(i-v-1);
+        }
+    }
+    printf("%d\n",result);
+}
+
+int main(int argc, const char * argv[]) {
+    // insert code here...
+    while(1){
+        binary();
+        fflush(stdin);
+        fflush(stdout);
+    }
+    return 0;
+}
